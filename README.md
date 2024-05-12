@@ -1,25 +1,27 @@
-# autocorrect-spelling-correction
-# first 
--- this project inspired from this repo : https://github.com/oliverguhr/spelling 
-# how to use this code ?
-## generate dataset use dataset that be suitable for your task in directory called data as txt file 
-run 2 scripts for dataset :
--- convert_leipzig_data.sh
--- generate_dataset.py
-## now you can run fine tuning script 
--- fine-tuning script
+# Automatic Spelling Correction
 
-## all this steps i do it in colab notebook 
--- spelling_correction.ipynb
+This project was inspired by a repository found at: [Spelling Correction by oliverguhr](https://github.com/oliverguhr/spelling).
 
-note:
-in notebook i used script called run_summarization.py , don't worry this and fine-tuning script are same only names changed
+## Usage Guide:
 
-final models pushed on hugging face hub here :
-https://huggingface.co/Elalimy/english_spelling_correction
+### 1. Dataset Generation:
+- Prepare a dataset suitable for your task in a directory named `data` as a TXT file.
+- Run two scripts for dataset preparation:
+  - `convert_leipzig_data.sh`
+  - `generate_dataset.py`
 
-to deploy model you can use flask app: 
--- app.py
+### 2. Fine-Tuning:
+- Utilize the fine-tuning script for training your model.
+  - Refer to `fine-tuning_script.py`.
 
-this is deployment for testing :
-https://huggingface.co/spaces/Elalimy/autocorrect_english_spelling_sentence
+### 3. Environment Setup:
+- All steps can be executed within a Colab notebook.
+  - Refer to `spelling_correction.ipynb`.
+
+### 4. Model Deployment:
+- The final models have been uploaded to the Hugging Face Model Hub [here](https://huggingface.co/Elalimy/english_spelling_correction).
+- For deployment, consider using the provided Flask application:
+  - Refer to `app.py`.
+
+### Testing Deployment:
+- Test deployment using the provided link: [Spelling Correction Deployment](https://huggingface.co/spaces/Elalimy/autocorrect_english_spelling_sentence).
