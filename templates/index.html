@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling Correction</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #4e4376, #2b5876);
+            color: #ffffff;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5); /* Add transparency to the background */
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+        }
+        textarea {
+            width: 90%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #fff;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        button {
+            background-color: #f39c12;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e67e22;
+        }
+        #result {
+                font-size: 18px;
+                margin: 34px auto;
+                color: aqua;
+                text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spelling Correction</h1>
+        <form id="correctionForm" action="/correct" method="post">
+            <label for="textInput">Enter Text:</label><br>
+            <textarea id="textInput" name="text" rows="4" cols="50"></textarea><br>
+            <button type="submit">Correct Spelling</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("correctionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch('/correct', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = "Corrected Text: " + data.corrected_text;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
